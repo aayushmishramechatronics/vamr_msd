@@ -1,0 +1,105 @@
+# ==========================================
+# ROS2 / Colcon Build Artifacts
+# ==========================================
+build/
+install/
+log/
+
+# Colcon metadata
+.colcon/
+
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# ==========================================
+# ROS Generated Files
+# ==========================================
+*.pyc
+*.pyo
+*.pyd
+
+# ROS logs
+*.log
+
+# ROS bag files
+*.db3
+*.mcap
+*.bag
+
+# ==========================================
+# Gazebo
+# ==========================================
+gazebo/
+*.world~
+*.sdf~
+
+# ==========================================
+# RViz temporary files
+# ==========================================
+*.rviz~
+
+# ==========================================
+# Temporary and Backup Files
+# ==========================================
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
+
+# ==========================================
+# Linux / WSL
+# ==========================================
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# VS Code
+# ==========================================
+.vscode/
+
+# Uncomment if you want workspace settings tracked
+# !.vscode/settings.json
+# !.vscode/extensions.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+
+# ==========================================
+# JetBrains IDEs
+# ==========================================
+.idea/
+*.iml
+
+# ==========================================
+# CLion / CMake
+# ==========================================
+cmake-build-*/
+
+# ==========================================
+# Coverage Reports
+# ==========================================
+htmlcov/
+.coverage
+.pytest_cache/
+
+# ==========================================
+# Generated Documentation
+# ==========================================
+docs/_build/
+
+# ==========================================
+# User-specific Maps (Optional)
+# Uncomment if maps are generated during runtime
+# ==========================================
+maps/*.pgm
+maps/*.yaml
