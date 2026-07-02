@@ -1,6 +1,4 @@
-
-
-# Author
+## Author
 
 Aayush Anil Mishra - 
 UG Mechatronics @ MIT Manipal
