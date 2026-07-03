@@ -1,45 +1,33 @@
+## Author
 
----
+Aayush Anil Mishra - 
+UG Mechatronics @ MIT Manipal
 
-# Author
-
-Aayush Anil Mishra 
-Undergraduate Mechatronics Engineering Student
-
----
-
-````markdown
-# VAMR_MSD
-## Vision-Assisted Autonomous Mobile Robot with Mission-Level Task Scheduling and Docking in ROS2 Humble
+## VAMR_MSD: Vision-Assisted Autonomous Mobile Robot with Mission-Level Task Scheduling and Docking in ROS2 Humble
 
 [![ROS2 Humble](https://img.shields.io/badge/ROS2-Humble-blue.svg)]()
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420.svg)]()
 [![Gazebo](https://img.shields.io/badge/Gazebo-11-orange.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
 
----
 
-## Project Overview
+### Project Overview
 
 VAMR_MSD (Vision-Assisted Autonomous Mobile Robot with Mission-Level Task Scheduling and Docking) is a modular autonomous mobile robotics platform developed in ROS2 Humble for research and educational applications in autonomous navigation, mission execution, and intelligent robot behavior.
 
-The platform integrates:
+The Platform Integrates:
 
-- Vision-assisted object tracking
-- SLAM-based environment mapping
+- Vision-assisted Object Tracking
+- SLAM-based Environment Mapping
 - Localization using Adaptive Monte Carlo Localization (AMCL)
-- Autonomous navigation using Nav2
-- Mission-level multi-goal task scheduling
-- Autonomous docking capability
-- Simulation-first development workflow using Gazebo
+- Autonomous Navigation using Nav2
+- Mission-level Multi-goal Task Scheduling
+- Autonomous Docking Capability
+- Simulation-first Development Workflow using Gazebo
 
 Unlike conventional ROS mobile robot demonstrations which only showcase single-point navigation, VAMR_MSD focuses on complete mission execution pipelines including perception, planning, task scheduling, and energy-aware behavior.
 
----
-
-# System Architecture
-
-```text
+````markdown
                     +----------------+
                     | Vision System  |
                     | Camera + CV    |
@@ -64,21 +52,18 @@ Unlike conventional ROS mobile robot demonstrations which only showcase single-p
                                            +----------------------+
 ````
 
----
 
 # Objectives
 
-The project aims to develop a mobile robot capable of:
+The Project Aims to Develop a Mobile Robot Capable of:
 
-* Generating occupancy maps using SLAM
-* Localizing itself within a previously generated map
-* Performing autonomous navigation to target locations
-* Executing multiple goals sequentially
-* Tracking visual targets using onboard vision
-* Returning to a charging dock autonomously
-* Recording mission-level performance statistics
-
----
+* Generating Occupancy Maps using SLAM
+* Localizing Itself within a Previously Generated Map
+* Performing Autonomous Navigation to Target Locations
+* Executing Multiple Goals Sequentially
+* Tracking Visual Targets using Onboard Vision
+* Returning to a Charging Dock Autonomously
+* Recording Mission-level Performance Statistics
 
 # Implemented Features
 
@@ -86,36 +71,34 @@ The project aims to develop a mobile robot capable of:
 
 ### Differential Drive Mobile Robot
 
-* Custom URDF/Xacro robot model
-* ROS2 Control integration
-* Differential drive controller
+* Custom URDF/Xacro Robot Model
+* ROS2 Control Integration
+* Differential Drive Controller
 
 ### Sensor Suite
 
 * 2D LiDAR
 * RGB Camera
-* Depth Camera support
+* Depth Camera Support
 * Wheel Odometry
 
 ### Simulation Environment
 
-* Gazebo Classic simulation
-* Empty world testing environment
-* Obstacle-rich navigation environment
-
----
+* Gazebo Classic Simulation
+* Empty World Testing Environment
+* Obstacle-rich Navigation Environment
 
 ## Mapping and Localization
 
 ### SLAM Toolbox
 
-Supports online asynchronous SLAM for map generation.
+Supports Online Asynchronous SLAM for Map Generation.
 
 Features:
 
-* Real-time occupancy grid generation
-* Loop closure support
-* Persistent map saving
+* Real-time Occupancy Grid Generation
+* Loop Closure Support
+* Persistent Map Saving
 
 Launch:
 
@@ -123,15 +106,13 @@ Launch:
 ros2 launch vamr_msd online_async_launch.py
 ```
 
----
-
 ### Adaptive Monte Carlo Localization (AMCL)
 
-Provides probabilistic localization using:
+Provides Probabilistic Localization using:
 
-* Laser scan matching
-* Particle filter localization
-* Map-based pose estimation
+* Laser Scan Matching
+* Particle Filter Localization
+* Map-based Pose Estimation
 
 Launch:
 
@@ -139,18 +120,16 @@ Launch:
 ros2 launch vamr_msd localization_launch.py
 ```
 
----
-
 ## Autonomous Navigation
 
-Navigation is implemented using Nav2.
+Navigation is Implemented using Nav2.
 
 Capabilities:
 
-* Global path planning
-* Local obstacle avoidance
-* Recovery behaviors
-* Goal reaching
+* Global Path Planning
+* Local Obstacle Avoidance
+* Recovery Behaviors
+* Goal Reaching
 
 Launch:
 
@@ -158,17 +137,15 @@ Launch:
 ros2 launch vamr_msd navigation_launch.py
 ```
 
----
-
 ## Vision Assisted Navigation
 
-The robot uses camera input for target detection and tracking.
+The Robot uses Camera Input for Target Detection and Tracking.
 
 Current implementation includes:
 
-* Color-based object tracking
-* Visual servoing
-* Camera-guided motion commands
+* Color-Based Object Tracking
+* Visual Servoing
+* Camera-Guided Motion Commands
 
 Launch:
 
@@ -178,26 +155,24 @@ ros2 launch vamr_msd ball_tracker.launch.py
 
 Future upgrades include:
 
-* YOLO object detection
-* Semantic navigation
-* Dynamic object following
-
----
+* YOLO Object Detection
+* Semantic Navigation
+* Dynamic Object Following
 
 ## Mission-Level Goal Queue System
 
-Traditional Nav2 navigation executes only one goal at a time.
+Traditional Nav2 Navigation Executes only 1 Goal at a Time.
 
 VAMR_MSD introduces:
 
-* FIFO mission queue
-* Multiple waypoint execution
-* Goal retry mechanism
-* Pause and resume support
-* Mission cancellation
-* YAML mission file support
+* FIFO Mission Queue
+* Multiple Waypoint Execution
+* Goal Retry Mechanism
+* Pause and Resume Support
+* Mission Cancellation
+* YAML Mission File Support
 
-Example mission:
+Example Mission:
 
 ```yaml
 goals:
@@ -210,13 +185,11 @@ goals:
     yaw: 1.57
 ```
 
----
-
 ## Autonomous Docking
 
-The robot can automatically return to a docking station after mission completion.
+The Robot can Automatically Return to a Docking Station after Mission Completion.
 
-Planned docking workflow:
+Planned Docking Workflow:
 
 ```text
 Mission Complete
@@ -232,20 +205,16 @@ Fine Alignment
 Charging State
 ```
 
----
-
 ## Mission Statistics
 
-Mission execution metrics include:
+Mission Execution Metrics Include:
 
-* Total mission duration
-* Distance travelled
-* Average navigation speed
-* Number of goals completed
-* Number of retries
-* Docking success rate
-
----
+* Total Mission Duration
+* Distance Travelled
+* Average Navigation Speed
+* Number of Goals Completed
+* Number of Retries
+* Docking Success Rate
 
 # Repository Structure
 
@@ -264,38 +233,32 @@ vamr_msd/
 └── worlds/
 ```
 
----
-
 ## Configuration Directory
 
-Contains parameter files for all subsystems.
+Contains Parameter Files for All Subsystems.
 
 | File                            | Purpose                                     |
 | ------------------------------- | ------------------------------------------- |
-| ball_tracker_params_robot.yaml  | Ball tracking parameters for physical robot |
-| ball_tracker_params_sim.yaml    | Ball tracking parameters for simulation     |
-| gazebo_params.yaml              | Gazebo simulation parameters                |
-| joystick.yaml                   | Joystick configuration                      |
-| mapper_params_online_async.yaml | SLAM Toolbox configuration                  |
-| nav2_params.yaml                | Nav2 navigation parameters                  |
-| twist_mux.yaml                  | Velocity command arbitration                |
-
----
+| ball_tracker_params_robot.yaml  | Ball Tracking Parameters for Physical Robot |
+| ball_tracker_params_sim.yaml    | Ball Tracking Parameters for Simulation     |
+| gazebo_params.yaml              | Gazebo Simulation Parameters                |
+| joystick.yaml                   | Joystick Configuration                      |
+| mapper_params_online_async.yaml | SLAM Toolbox Configuration                  |
+| nav2_params.yaml                | Nav2 Navigation Parameters                  |
+| twist_mux.yaml                  | Velocity Command Arbitration                |
 
 ## Description Directory
 
-Contains robot description files.
+Contains Robot Description Files.
 
 | File               | Purpose              |
 | ------------------ | -------------------- |
-| robot.urdf.xacro   | Main robot model     |
-| robot_core.xacro   | Base chassis         |
-| lidar.xacro        | LiDAR sensor         |
-| camera.xacro       | RGB camera           |
-| depth_camera.xacro | Depth sensor         |
-| ros2_control.xacro | Controller interface |
-
----
+| robot.urdf.xacro   | Main Robot Model     |
+| robot_core.xacro   | Base Chassis         |
+| lidar.xacro        | LiDAR Sensor         |
+| camera.xacro       | RGB Camera           |
+| depth_camera.xacro | Depth Sensor         |
+| ros2_control.xacro | Controller Interface |
 
 ## Launch Directory
 
@@ -303,37 +266,33 @@ Contains launch files for individual subsystems.
 
 | Launch File            | Purpose                |
 | ---------------------- | ---------------------- |
-| launch_sim.launch.py   | Full simulation launch |
-| launch_robot.launch.py | Physical robot launch  |
-| online_async_launch.py | SLAM launch            |
-| localization_launch.py | AMCL launch            |
-| navigation_launch.py   | Nav2 launch            |
-| ball_tracker.launch.py | Vision tracking launch |
+| launch_sim.launch.py   | Full Simulation Launch |
+| launch_robot.launch.py | Physical Robot Launch  |
+| online_async_launch.py | SLAM Launch            |
+| localization_launch.py | AMCL Launch            |
+| navigation_launch.py   | Nav2 Launch            |
+| ball_tracker.launch.py | Vision Tracking Launch |
 | joystick.launch.py     | Teleoperation          |
 | rsp.launch.py          | Robot State Publisher  |
-
----
 
 ## Worlds Directory
 
 | World           | Purpose            |
 | --------------- | ------------------ |
-| empty.world     | Basic validation   |
-| obstacles.world | Navigation testing |
-
----
+| empty.world     | Basic Validation   |
+| obstacles.world | Navigation Testing |
 
 # Software Dependencies
 
-## Operating System
+### Operating System
 
 * Ubuntu 22.04 LTS
 
-## ROS Distribution
+### ROS Distribution
 
 * ROS2 Humble Hawksbill
 
-## Major Packages
+### Major Packages
 
 * Nav2
 * SLAM Toolbox
@@ -344,26 +303,22 @@ Contains launch files for individual subsystems.
 * joint_state_broadcaster
 * twist_mux
 
----
-
 # Installation
 
-## Create Workspace
+### Create Workspace
 
 ```bash
 mkdir -p ~/robot_project/src
 cd ~/robot_project/src
 ```
 
-Clone repository:
+Clone Repository:
 
 ```bash
 git clone https://github.com/<username>/vamr_msd.git
 ```
 
----
-
-## Install Dependencies
+### Install Dependencies
 
 ```bash
 cd ~/robot_project
@@ -375,58 +330,44 @@ rosdep install \
     -y
 ```
 
----
-
-## Build Workspace
+### Build Workspace
 
 ```bash
 colcon build --symlink-install
 ```
 
----
-
-## Source Environment
+### Source Environment
 
 ```bash
 source /opt/ros/humble/setup.bash
 source install/setup.bash
 ```
 
----
-
 # Running the Simulation
 
-## Launch Gazebo
+### Launch Gazebo
 
 ```bash
 ros2 launch vamr_msd launch_sim.launch.py
 ```
 
----
-
-## Launch SLAM
+### Launch SLAM
 
 ```bash
 ros2 launch vamr_msd online_async_launch.py
 ```
 
----
-
-## Launch Localization
+### Launch Localization
 
 ```bash
 ros2 launch vamr_msd localization_launch.py
 ```
 
----
-
-## Launch Navigation
+### Launch Navigation
 
 ```bash
 ros2 launch vamr_msd navigation_launch.py
 ```
-
----
 
 # Mapping Workflow
 
@@ -442,13 +383,11 @@ Generate Occupancy Map
 Save Map
 ```
 
-Save map:
+Save Map:
 
 ```bash
 ros2 run nav2_map_server map_saver_cli -f ~/maps/vamr_map
 ```
-
----
 
 # Localization Workflow
 
@@ -464,54 +403,41 @@ Receive Laser Scans
 Estimate Robot Pose
 ```
 
----
-
 # Future Work
 
-## Perception
+### Perception
 
-* YOLOv8 object detection
-* Semantic segmentation
-* Dynamic obstacle prediction
+* YOLOv8 Object Detection
+* Semantic Segmentation
+* Dynamic Obstacle Prediction
 
-## Navigation
+### Navigation
 
-* Multi-floor navigation
-* Dynamic replanning
-* Semantic navigation
+* Multi-Floor Navigation
+* Dynamic Replanning
+* Semantic Navigation
 
-## Fleet Management
+### Fleet Management
 
-* Multi-robot coordination
-* Shared map server
-* Distributed task allocation
+* Multi-Robot Coordination
+* Shared Map Server
+* Distributed Task Allocation
 
-## Cloud Robotics
+### Cloud Robotics
 
-* Remote mission upload
-* Telemetry dashboard
-* Cloud mission scheduling
-
----
+* Remote Mission Upload
+* Telemetry Dashboard
+* Cloud Mission Scheduling
 
 # Research Contributions
 
-Potential publication topics include:
+Potential Publication Topics Include:
 
-* Vision-assisted mission scheduling
-* Hybrid visual and LiDAR localization
-* Autonomous docking strategies
-* Lightweight mobile robot autonomy stack
-
----
+* Vision-Assisted Mission Scheduling
+* Hybrid Visual and LiDAR Localization
+* Autonomous Docking Strategies
+* Lightweight Mobile Robot Autonomy Stack
 
 # License
 
 MIT License
-
-```
-
----
-
-
-```

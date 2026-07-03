@@ -1,0 +1,77 @@
+goal_queue_node:
+  ros__parameters:
+
+    # ----------------------------------------------------------------------
+    # Simulation
+    # ----------------------------------------------------------------------
+    use_sim_time: true
+
+    # ----------------------------------------------------------------------
+    # Nav2 Action Server
+    # ----------------------------------------------------------------------
+    action_server_name: "navigate_to_pose"
+
+    # ----------------------------------------------------------------------
+    # Goal Input Topics
+    # ----------------------------------------------------------------------
+    rviz_goal_topic: "goal_pose"
+    add_goal_topic: "goal_queue/add"
+
+    # ----------------------------------------------------------------------
+    # Mission Control Topics
+    # ----------------------------------------------------------------------
+    pause_topic: "goal_queue/pause"
+    resume_topic: "goal_queue/resume"
+    cancel_topic: "goal_queue/cancel"
+
+    # ----------------------------------------------------------------------
+    # Output Topics
+    # ----------------------------------------------------------------------
+    status_topic: "goal_queue/status"
+    current_goal_topic: "current_goal"
+    mission_complete_topic: "mission_complete"
+
+    # Future Mission Statistics topic
+    mission_stats_topic: "goal_queue/mission_stats"
+
+    # Future Queue Visualization topic
+    queue_state_topic: "goal_queue/queue_state"
+
+    # ----------------------------------------------------------------------
+    # Retry Behaviour
+    # ----------------------------------------------------------------------
+    max_retries: 3
+    retry_delay_sec: 2.0
+
+    # ----------------------------------------------------------------------
+    # Goal Timeout
+    # Prevents a robot becoming stuck forever due to localization
+    # failures or planner/controller oscillations.
+    # ----------------------------------------------------------------------
+    goal_timeout_sec: 300.0
+
+    # ----------------------------------------------------------------------
+    # Timer Rates
+    # ----------------------------------------------------------------------
+    status_publish_rate_hz: 1.0
+    control_loop_rate_hz: 2.0
+
+    # ----------------------------------------------------------------------
+    # Mission File Settings
+    # ----------------------------------------------------------------------
+    default_frame_id: "map"
+    mission_file: ""
+
+    # ----------------------------------------------------------------------
+    # Autonomous Docking Parameters (Future Feature)
+    # ----------------------------------------------------------------------
+    docking_station_frame: "dock_station"
+    docking_retry_attempts: 3
+    docking_approach_distance: 0.50
+
+    # ----------------------------------------------------------------------
+    # Vision Assisted Navigation Parameters (Future Feature)
+    # ----------------------------------------------------------------------
+    vision_assist_enabled: false
+    obstacle_detection_distance: 1.0
+    camera_topic: "/camera/image_raw"
