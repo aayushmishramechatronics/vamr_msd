@@ -1,7 +1,7 @@
 ## Author
 
-Aayush Anil Mishra - 
-UG Mechatronics @ MIT Manipal
+**Aayush Anil Mishra** - 
+Mechatronics @ MIT Manipal
 
 ## VAMR_MSD: Vision-Assisted Autonomous Mobile Robot with Mission-Level Task Scheduling and Docking in ROS2 Humble
 
