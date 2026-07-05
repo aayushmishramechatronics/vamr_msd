@@ -11,6 +11,9 @@ Mechatronics @ MIT Manipal
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
 
 
+![Video](/img/vamr_msd.mp4)
+
+
 ### Project Overview
 
 VAMR_MSD (Vision-Assisted Autonomous Mobile Robot with Mission-Level Task Scheduling and Docking) is a modular autonomous mobile robotics platform developed in ROS2 Humble for research and educational applications in autonomous navigation, mission execution, and intelligent robot behavior.
