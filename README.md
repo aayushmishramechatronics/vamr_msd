@@ -11,7 +11,7 @@ Mechatronics @ MIT Manipal
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
 
 
-![Video](/img/vamr_msd.mp4)
+https://github.com/user-attachments/assets/cae3eb6d-634c-46d7-82e8-2c5815984f94
 
 
 ### Project Overview
