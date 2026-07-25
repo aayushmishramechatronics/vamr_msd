@@ -34,8 +34,8 @@ def generate_launch_description():
     params_file = LaunchConfiguration('params_file')
     lifecycle_nodes = ['map_server', 'amcl']
 
-    # Map fully qualified names to relative ones so the node's namespace can be prepended.
-    # In case of the transforms (tf), currently, there doesn't seem to be a better alternative
+    # map fully qualified names to relative ones so the node's namespace can be prepended.
+    # in case of the transforms (tf), currently, there doesn't seem to be a better alternative
     # https://github.com/ros/geometry2/issues/32
     # https://github.com/ros/robot_state_publisher/pull/30
     # TODO(orduno) Substitute with `PushNodeRemapping`
@@ -43,7 +43,7 @@ def generate_launch_description():
     remappings = [('/tf', 'tf'),
                   ('/tf_static', 'tf_static')]
 
-    # Create our own temporary YAML files that include substitutions
+    # create our own temporary YAML files that include substitutions
     param_substitutions = {
         'use_sim_time': use_sim_time,
         'yaml_filename': map_yaml_file}
@@ -55,7 +55,7 @@ def generate_launch_description():
         convert_types=True)
 
     return LaunchDescription([
-        # Set env var to print messages to stdout immediately
+        # set env var to print messages to stdout immediately
         SetEnvironmentVariable('RCUTILS_LOGGING_BUFFERED_STREAM', '1'),
 
         DeclareLaunchArgument(
@@ -64,7 +64,7 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'map',
-            default_value=os.path.join(bringup_dir, 'maps', 'turtlebot3_world.yaml'),
+            default_value=os.path.join(bringup_dir, 'maps', 'articubot_map.yaml'),
             description='Full path to map yaml file to load'),
 
         DeclareLaunchArgument(

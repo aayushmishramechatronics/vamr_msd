@@ -1,0 +1,35 @@
+vision_assist_node:
+  ros__parameters:
+    use_sim_time: true
+
+    # Topics
+    camera_topic: "camera/image_raw"
+    vision_events_topic: "vision/events"
+    speed_limit_topic: "speed_limit"          # consumed natively by Nav2 controller_server
+    pause_topic: "goal_queue/pause"           # must match Feature 1's pause_topic
+    dock_trigger_topic: "vision/dock_trigger" # reserved for Feature 3 (docking_controller)
+
+    # Velocity Adaptation
+    normal_speed: 0.5
+    slow_speed: 0.15
+    cone_lost_timeout_sec: 1.0
+    processing_scale: 0.5
+    process_every_n_frames: 2
+
+    # Red Cone Detection (HSV Thresholds, Tuned for a Bright Red Traffic
+    # Cone under Typical Indoor/Gazebo Lighting - Retune per your World)
+    red_hue_low1: 0
+    red_hue_high1: 10
+    red_hue_low2: 170
+    red_hue_high2: 180
+    red_sat_min: 120
+    red_val_min: 70
+    red_cone_min_area_px: 800
+    red_cone_confidence_scale: 3000.0
+
+    # ArUco Markers
+    aruco_dictionary: "DICT_4X4_50"
+    docking_marker_id: 0
+    stop_marker_id: 1
+    dock_event_cooldown_sec: 5.0
+    stop_event_cooldown_sec: 3.0

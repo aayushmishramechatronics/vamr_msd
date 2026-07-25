@@ -31,6 +31,7 @@ install(
     config
     description
     launch
+    maps
     worlds
   DESTINATION
     share/${PROJECT_NAME}
@@ -43,6 +44,7 @@ install(
 install(
   PROGRAMS
     scripts/goal_queue_node.py
+    scripts/vision_assist_node.py
   DESTINATION
     lib/${PROJECT_NAME}
 )

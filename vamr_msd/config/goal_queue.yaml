@@ -75,3 +75,4 @@ goal_queue_node:
     vision_assist_enabled: false
     obstacle_detection_distance: 1.0
     camera_topic: "/camera/image_raw"
+    
