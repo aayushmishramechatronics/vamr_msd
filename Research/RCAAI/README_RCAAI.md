@@ -109,8 +109,6 @@ Replan Defer Retry
 
 This is the proposed method being evaluated.
 
----
-
 ## 5. Fault Model
 
 Only three fault classes are included in the current experiment.
@@ -133,8 +131,6 @@ A mission goal is placed inside an occupied or lethal costmap region. This tests
 
 A temporary obstacle is spawned during execution and removed after a fixed duration. This tests recovery from a transient navigation problem.
 
----
-
 ## 6. Fault Diagnosis on ROS 2 Humble
 
 The experiment does not depend on newer Nav2 typed error codes. Diagnosis uses signals available in the Humble stack:
@@ -146,8 +142,6 @@ The experiment does not depend on newer Nav2 typed error codes. Diagnosis uses s
 5. A valid path after failure is classified as **F3**.
 
 The classification procedure is deterministic and identical across trials.
-
----
 
 ## 7. Fixed Experimental Parameters
 
@@ -215,8 +209,6 @@ For a fair comparison, each run keeps the following fixed:
 - software revision.
 
 The policy and prescribed fault condition are the intended experimental variables. Each run records the Git commit used for the experiment.
-
----
 
 ## 10. Metrics
 
