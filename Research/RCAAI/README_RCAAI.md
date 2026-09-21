@@ -6,7 +6,6 @@
 **Programme:** Mechatronics, Robotics and Automation, MIT Manipal  
 **Platform:** ROS 2 Humble, Gazebo 11, Nav2, SLAM Toolbox, AMCL
 
----
 
 ## 1. Project Purpose
 
@@ -18,7 +17,6 @@ For **RCAAI 2026**, the project is being used as a controlled research platform.
 
 The robot, map, goals and Nav2 configuration remain common across the experiments. The main variable is the **mission-level recovery policy**.
 
----
 
 ## 2. Existing VAMR_MSD Platform
 
@@ -35,11 +33,7 @@ The repository already provides:
 - Pause/resume and mission cancellation
 - YAML-based mission configuration
 
-The project also contains a separate color-based visual tracking capability. It is kept as part of the general robot platform but is **not a research variable in the RCAAI paper**.
-
-Docking, YOLO, semantic navigation, dynamic object following, energy optimization and other planned features are outside the current RCAAI scope.
-
----
+The project also contains a separate color-based visual tracking capability. It is kept as part of the general robot platform but is **not a research variable in the RCAAI paper**. Docking, YOLO, semantic navigation, dynamic object following, energy optimization and other planned features are outside the current RCAAI scope.
 
 ## 3. RCAAI Research Contribution
 
@@ -67,36 +61,21 @@ Multi-Goal Mission
        F1            F2     F3
         |             |      |
      Replan       Defer    Retry
-                     /        
-                  Abort goal
-                       |
-                       v
+                    /        
+               Abort Goal
+                   |
                Continue Mission
 ```
 
 The research contribution is therefore **mission-level fault handling**, not a replacement for SLAM, AMCL or Nav2.
 
----
-
-## 4. Research Question and Hypothesis
-
-### Research Question
-
-> **How does fault-aware mission recovery affect mission completion reliability and recovery performance compared with no mission-level recovery and fixed mission-level retry under controlled navigation disturbances?**
-
-### Hypothesis
+## 4. Hypothesis & Experimental Policies
 
 A mission manager that identifies the failure condition and applies an appropriate recovery action should maintain mission continuity more effectively than immediate mission termination or blind retry.
 
-The policy and experimental parameters are fixed before the main campaign and are not changed after observing results.
+The policy and experimental parameters are fixed before the main campaign and are not changed after observing results. All three policies use the same robot, map, mission, Nav2 configuration and simulation settings.
 
----
-
-## 5. Experimental Policies
-
-All three policies use the same robot, map, mission, Nav2 configuration and simulation settings.
-
-### B1 — No Mission-Level Recovery
+### B1: No Mission-Level Recovery
 
 Nav2 performs its normal behavior. If the goal ultimately fails, the mission is terminated.
 
@@ -104,7 +83,7 @@ Nav2 performs its normal behavior. If the goal ultimately fails, the mission is 
 Goal failure → Abort mission
 ```
 
-### B2 — Fixed Mission-Level Retry
+### B2: Fixed Mission-Level Retry
 
 The same failed goal is resent up to a fixed retry limit. No diagnosis is performed.
 
@@ -112,7 +91,7 @@ The same failed goal is resent up to a fixed retry limit. No diagnosis is perfor
 Goal failure → Retry same goal → Retry limit → Abort mission
 ```
 
-### B3 — Fault-Aware Mission Recovery
+### B3: Fault-Aware Mission Recovery
 
 The failure is classified using ROS 2 Humble-compatible diagnostics and a deterministic recovery action is selected.
 
@@ -132,7 +111,7 @@ This is the proposed method being evaluated.
 
 ---
 
-## 6. Fault Model
+## 5. Fault Model
 
 Only three fault classes are included in the current experiment.
 
@@ -142,21 +121,21 @@ Only three fault classes are included in the current experiment.
 | **F2** | Structurally unreachable goal | Defer / abort goal |
 | **F3** | Temporary navigation disturbance | Retry |
 
-### F1 — Persistent Blockage
+### F1 - Persistent Blockage
 
 A static obstacle remains across the planned route for the trial. This tests whether the system can distinguish a persistent blockage from a temporary failure.
 
-### F2 — Unreachable Goal
+### F2 - Unreachable Goal
 
 A mission goal is placed inside an occupied or lethal costmap region. This tests whether an impossible goal can be isolated without unnecessarily terminating the rest of the mission.
 
-### F3 — Temporary Disturbance
+### F3 - Temporary Disturbance
 
 A temporary obstacle is spawned during execution and removed after a fixed duration. This tests recovery from a transient navigation problem.
 
 ---
 
-## 7. Fault Diagnosis on ROS 2 Humble
+## 6. Fault Diagnosis on ROS 2 Humble
 
 The experiment does not depend on newer Nav2 typed error codes. Diagnosis uses signals available in the Humble stack:
 
@@ -170,7 +149,7 @@ The classification procedure is deterministic and identical across trials.
 
 ---
 
-## 8. Fixed Experimental Parameters
+## 7. Fixed Experimental Parameters
 
 | Parameter | Value |
 |---|---:|
@@ -183,13 +162,11 @@ The classification procedure is deterministic and identical across trials.
 
 These values are frozen before the main experiment and recorded with every run.
 
----
-
-## 9. Experimental Campaign
+## 8. Experimental Campaign
 
 A nominal test is performed first to confirm that all three policies behave consistently when no fault is present.
 
-### N0 — Nominal
+### N0 - Nominal
 
 - B1: 20 trials
 - B2: 20 trials
@@ -197,19 +174,19 @@ A nominal test is performed first to confirm that all three policies behave cons
 
 No fault is injected.
 
-### F1 — Persistent Blockage
+### F1 - Persistent Blockage
 
 - B1: 20 trials
 - B2: 20 trials
 - B3: 20 trials
 
-### F2 — Unreachable Goal
+### F2 - Unreachable Goal
 
 - B1: 20 trials
 - B2: 20 trials
 - B3: 20 trials
 
-### F3 — Temporary Disturbance
+### F3 - Temporary Disturbance
 
 - B1: 20 trials
 - B2: 20 trials
@@ -223,29 +200,25 @@ No fault is injected.
 
 The campaign is automated to keep the initial conditions and experiment procedure consistent.
 
----
-
-## 10. Experimental Controls
+## 9. Experimental Controls
 
 For a fair comparison, each run keeps the following fixed:
 
 - map and robot model;
 - starting pose;
 - mission goals;
-- Nav2 parameters;
+- nav2 parameters;
 - obstacle configuration;
 - fault-injection timing;
 - recovery limits;
 - physics settings;
 - software revision.
 
-The policy and prescribed fault condition are the intended experimental variables.
-
-Each run records the Git commit used for the experiment.
+The policy and prescribed fault condition are the intended experimental variables. Each run records the Git commit used for the experiment.
 
 ---
 
-## 11. Metrics
+## 10. Metrics
 
 ### Primary
 
@@ -267,9 +240,7 @@ successful missions / total missions
 
 Operator-required resets may be logged, but they are not a headline metric for this simulation-only study.
 
----
-
-## 12. Data Logging and Analysis
+## 11. Data Logging and Analysis
 
 Each trial produces one append-only CSV record containing the policy, fault condition, timestamps, success status, recovery actions, Git commit and timing information.
 
@@ -283,9 +254,7 @@ Key analysis includes:
 
 Results that are not statistically significant will be reported as such.
 
----
-
-## 13. RCAAI Scope
+## 12. RCAAI Scope
 
 ### Included
 
@@ -301,7 +270,7 @@ Results that are not statistically significant will be reported as such.
 - Repeated simulation trials
 - Quantitative comparison
 
-### Excluded from the paper
+### excluded from the paper
 
 - Autonomous docking
 - Battery/energy optimization
@@ -316,9 +285,7 @@ Results that are not statistically significant will be reported as such.
 
 These features may remain in the general VAMR_MSD project, but they are not part of the RCAAI research claim.
 
----
-
-## 14. RCAAI Research Files
+## 13. RCAAI Research Files
 
 The research branch will add only the files required to implement and reproduce the experiment:
 
@@ -349,14 +316,13 @@ vamr_msd/
 
 The existing robot description, SLAM, AMCL, Nav2 and general-purpose simulation files remain unchanged wherever possible.
 
----
 
-## 15. Current Status
+## 14. Current Status
 
-### Existing platform
+### Existing Platform
 
 - [x] ROS 2 Humble
-- [x] Gazebo simulation
+- [x] Gazebo Simulation
 - [x] Differential-drive robot
 - [x] LiDAR / SLAM
 - [x] AMCL localization
@@ -364,7 +330,7 @@ The existing robot description, SLAM, AMCL, Nav2 and general-purpose simulation 
 - [x] Multi-goal queue
 - [x] Basic retry
 
-### RCAAI research layer
+### RCAAI Research Layer
 
 - [x] Research question defined
 - [x] B1/B2/B3 policies defined
@@ -379,9 +345,8 @@ The existing robot description, SLAM, AMCL, Nav2 and general-purpose simulation 
 - [ ] Analyze results
 - [ ] Write final paper
 
----
 
-## 16. Research Principle
+## 15. Research Principle
 
 The RCAAI branch is intentionally narrow. The goal is **not to make VAMR_MSD larger**. The goal is to run one controlled experiment and answer one question with reproducible evidence:
 
